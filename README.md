@@ -1,6 +1,6 @@
 
 
-# rubyamf_quickly
+# soketisoketi
 
 <div align="center">
   <img  src="https://github.com/user-attachments/assets/e05e9e38-f774-4d29-8121-098cdff8fd69" alt="Hacktoberfest Banner" />
