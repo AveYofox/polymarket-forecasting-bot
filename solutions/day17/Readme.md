@@ -33,3 +33,32 @@ Thus, the overall **time complexity** is `O((log10(num))^2)`.
 
 ### Space Complexity 💾
 - The space complexity is `O(log10(num))` due to the storage of digits in the vector.
+
+### JAVA Approach Explanation
+
+### 1. **Convert the Number to a String**: 
+   - The integer `num` is converted to a string to facilitate easy manipulation of its digits.
+
+### 2. **Character Array Conversion**: 
+   - The string representation of the number is converted into a character array, allowing direct access to individual digits for swapping.
+
+### 3. **Iterate Through Each Digit**:
+   - An outer loop iterates through each digit of the number, starting from the leftmost digit.
+
+### 4. **Finding the Maximum Digit**: 
+   - For each digit at index `i`, an inner loop searches for the largest digit to the right. If a larger digit is found, its value and index are recorded.
+
+### 5. **Performing the Swap**: 
+   - If a larger digit is identified, a swap occurs between the current digit and the maximum digit found. This is designed to yield the maximum number with a single swap.
+
+### 6. **Break After the First Swap**: 
+   - The loop exits after the first swap to maximize the number, as further swaps are unnecessary.
+
+### 7. **Convert Back and Return**: 
+   - Finally, the modified character array is converted back into an integer and returned as the result.
+
+### Time Complexity ⏱️
+- The overall **time complexity** is `O((n)^2)`. This is due to the nested loops used to find the maximum digit.
+
+### Space Complexity 💾
+- The space complexity is `O(n)` for storing the character array representing the digits of the number.
