@@ -1,40 +1,64 @@
-# Intuition
+# 1106. Parsing A Boolean Expression
 
-This code provides an efficient approach to evaluating boolean expressions using a stack, focusing on significant elements like operators, boolean values, and parentheses, while ignoring irrelevant characters (like commas). The evaluation of expressions happens as soon as we encounter closing parentheses, allowing for early stopping when results become clear.
+## Problem Statement
 
-## Key Idea
+You're given a string that represents a boolean expression. You need to evaluate this expression and return the result. The expression can be in one of the following forms:
 
-We push operators and boolean values onto a stack as we traverse the expression. Upon encountering a closing parenthesis, we pop values off the stack to evaluate the subexpression. 
+- `'t'` which evaluates to `true`.
+- `'f'` which evaluates to `false`.
+- `'!(subExpr)'` which evaluates to the logical NOT of the inner expression `subExpr`.
+- `'&(subExpr1, subExpr2, ..., subExprn)'` which evaluates to the logical AND of the inner expressions `subExpr1, subExpr2, ..., subExprn` where `n >= 1`.
+- `'|(subExpr1, subExpr2, ..., subExprn)'` which evaluates to the logical OR of the inner expressions `subExpr1, subExpr2, ..., subExprn` where `n >= 1`.
 
-An improvement in this approach is that for certain operators (such as `&` and `|`), we can stop evaluating early:
-- For the `&` operator: If we encounter a `f` (false), we can conclude the result is `f` without needing to check further.
-- For the `|` operator: If we encounter a `t` (true), we can stop and conclude the result is `t`.
+The expression is guaranteed to be valid and follow the given rules.
 
-### Example:
-For the expression `&(t,|(f,t))`, we:
-1. Push `&` and `t`, then push `|` followed by `f` and `t`.
-2. When popping for the `|` subexpression, we encounter a `t`, so we can conclude the result of the subexpression is `t` without evaluating further.
-3. Push `t` back onto the stack, then evaluate the `&` operator, which results in `t` since all values are true.
+### Examples
 
-## Approach
+1. **Input**: `"&(|(f))"`
+   **Output**: `false`
+   **Explanation**:
+   - First, evaluate `|(f)` --> `f`. The expression is now `"&(f)"`.
+   - Then, evaluate `&(f)` --> `f`. The expression is now `"f"`.
+   - Finally, return `false`.
 
-1. **Initialize a stack** to store operators and boolean values.
-2. **Traverse the expression**, processing one character at a time:
-   - If the character is a comma or an open parenthesis, **skip** it.
-   - If the character is a boolean (`t` or `f`) or an operator (`&`, `|`, `!`), **push** it onto the stack.
-   - If the character is a **closing parenthesis**:
-     - Initialize two boolean flags (`hasTrue`, `hasFalse`) to track whether we've encountered `t` or `f` within the parentheses.
-     - **Pop values** from the stack and check:
-       - If the value is `t`, set `hasTrue` to `true`.
-       - If the value is `f`, set `hasFalse` to `true`.
-     - **Pop the operator** from the stack.
-     - **Evaluate** the subexpression based on the operator:
-       - If `!`, push `f` if `hasTrue` is `true`, otherwise push `t`.
-       - If `&`, push `f` if `hasFalse` is `true`, otherwise push `t`.
-       - If `|`, push `t` if `hasTrue` is `true`, otherwise push `f`.
-3. **Final result** will be the top value in the stack.
+2. **Input**: `"|(f,f,f,t)"`
+   **Output**: `true`
+   **Explanation**: The evaluation of `(false OR false OR false OR true)` is `true`.
 
-## Complexity
+3. **Input**: `"!(&(f,t))"`
+   **Output**: `true`
+   **Explanation**:
+   - First, evaluate `&(f,t)` --> `(false AND true)` --> `false` --> `f`. The expression is now `"!(f)"`.
+   - Then, evaluate `!(f)` --> `NOT false` --> `true`. We return `true`.
 
-- **Time Complexity**: O(N), where N is the number of characters in the expression. We traverse the entire expression once and evaluate subexpressions in constant time.
-- **Space Complexity**: O(N), as we use a stack to store the operators and boolean values.
+## Solution Approach
+
+### Brute-Force Approach
+
+A brute-force approach involves recursively parsing the expression and evaluating each sub-expression. This can be inefficient due to the overhead of recursive calls and the complexity of managing nested expressions.
+
+### Optimized Approach
+
+The optimized approach uses a stack to efficiently parse and evaluate the boolean expression. Here's how it works:
+
+1. **Initialize a Stack**: Use a stack to keep track of the current expression and its components.
+2. **Iterate through the Expression**: As you go through each character in the expression, handle different types of characters (`(`, `)`, `&`, `|`, `!`, `t`, `f`, `,`).
+3. **Handle Different Operators**:
+   - For `t` and `f`, push them onto the stack.
+   - For `!`, `&`, and `|`, push them onto the stack.
+   - For `(`, push it onto the stack to mark the beginning of a new sub-expression.
+   - For `)`, evaluate the sub-expression up to the last `(` and replace it with the result.
+4. **Evaluate Sub-expressions**:
+   - For `!`, pop the top element (which should be a boolean value) and push the negation of that value.
+   - For `&`, pop all elements up to the last `(` and evaluate the logical AND of these elements.
+   - For `|`, pop all elements up to the last `(` and evaluate the logical OR of these elements.
+
+### Explanation
+
+**Stack Operations**: The stack is used to keep track of the current state of the expression. When you encounter a `(`, you push it onto the stack to mark the beginning of a new sub-expression. When you encounter a `)`, you evaluate the sub-expression up to the last `(` and replace it with the result.
+
+**Boolean Evaluation**: For `!`, you simply negate the top value on the stack. For `&` and `|`, you pop all values up to the last `(` and evaluate them accordingly.
+
+### Time Complexity
+
+The time complexity of this approach is O(n), where n is the length of the expression. This is because we process each character in the expression exactly once.
