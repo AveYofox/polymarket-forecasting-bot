@@ -1,6 +1,6 @@
 
 
-# LeetCode Daily October Hacktoberfest 2024
+# rubyamf_quickly
 
 <div align="center">
   <img  src="https://github.com/user-attachments/assets/e05e9e38-f774-4d29-8121-098cdff8fd69" alt="Hacktoberfest Banner" />
@@ -44,7 +44,7 @@ Start by **forking** this repository. This will create a copy of the project und
 Next, clone the forked repository to your local machine:
 
 ```bash
-git clone https://github.com/arya2004/leetcode-daily-october-hacktoberfest-2024.git
+git clone https://github.com/arya2004/rubyamf_quickly.git
 ```
 
 ### 3. Navigate to the Correct Directory
