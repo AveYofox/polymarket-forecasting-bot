@@ -62,4 +62,3 @@ The optimized approach uses a stack to efficiently parse and evaluate the boolea
 ### Time Complexity
 
 The time complexity of this approach is O(n), where n is the length of the expression. This is because we process each character in the expression exactly once.
-
