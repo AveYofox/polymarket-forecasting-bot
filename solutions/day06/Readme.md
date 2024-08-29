@@ -15,7 +15,7 @@ In any other cases it will not be a similar senetences
 
 use stringstream to build a stream of characters and split the words based on whitespace (you can use any other utils as well)
 use two pointers to find longest matching prefix and suffixe lengths and 
-check if it length of sums gretaer or equal to 
+check if it length of sums greater than or equal to length of s2
 
 ### Time complexity:
 - O(∣sentence1∣+∣sentence2∣)
