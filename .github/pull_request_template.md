@@ -1,44 +1,27 @@
-# Pull Request Template
 
-## Description
 
-Please include a summary of the changes and the motivation behind them. Explain the context of the problem that your pull request solves or improves. If it fixes a bug or resolves an issue, please include that information here.
+### 🚀 What does this PR do?
+<!-- Describe your changes in detail -->
+- Adds solution for LeetCode Daily Challenge on (Day and Date) in (Programming Language).
+- Briefly explain the approach taken to solve the problem.
 
-Fixes # (issue)
+### 📝 Issue Reference:
+<!-- Link to the issue that your PR addresses -->
+Fixes issue: # (Mention the issue number this PR solves)
 
-## Type of Change
+### 🔍 Checklist:
+Please ensure the following before submitting your PR:
+- [ ] I have placed my solution in the correct folder (`solutions/dayXX/`).
+- [ ] My code follows clean coding practices and is efficient.
+- [ ] I have added comments in my code to explain the approach.
+- [ ] I have updated the `README.md` for the specific day with a brief explanation of my solution.
+- [ ] I have tested the solution on LeetCode and it works correctly.
 
-Please delete options that are not relevant.
+### 🔧 Solution Details:
+- **Language Used**: (e.g., Python, Java, C++, etc.)
+- **Time Complexity**: (e.g., O(n log n), O(n), etc.)
+- **Space Complexity**: (e.g., O(1), O(n), etc.)
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation update
+### 🌟 Additional Notes (if any):
+<!-- Add any additional info you want reviewers to know (e.g., edge cases handled, alternative approaches considered, etc.) -->
 
-## How Has This Been Tested?
-
-Please describe the tests that you ran to verify your changes. Provide instructions so others can reproduce. List any relevant details for your test configuration.
-
-- [ ] Test A
-- [ ] Test B
-
-**Test Configuration**:
-* Firmware version:
-* Hardware:
-* Toolchain:
-* SDK:
-
-## Checklist:
-
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
-
-## Additional Information
-
-Please add any other information that is relevant to this pull request.
