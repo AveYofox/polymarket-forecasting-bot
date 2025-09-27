@@ -1,0 +1,27 @@
+# Minimum Swaps to Balance Brackets USING PYTHON
+
+## Overview
+The algorithm counts the minimum number of swaps required to make a string of brackets balanced.
+
+## Explanation 
+
+### Stack
+- The stack is used to track unmatched `[` brackets.
+
+### Loop
+We iterate over each character in the string:
+
+1. **If it's `[`**: 
+   - Push it onto the stack.
+
+2. **If it's `]`**:
+   - **If the stack is not empty**: 
+     - Pop the stack (indicating a match).
+   - **If the stack is empty**: 
+     - Increment `ans` (indicating an unmatched `]`).
+
+### Return
+Finally, we return the minimum number of swaps needed, calculated as:
+\[
+\text{swaps} = \frac{(\text{ans} + 1)}{2}
+\]
