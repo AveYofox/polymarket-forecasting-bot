@@ -9,14 +9,18 @@ func isPalindrome(s string) bool {
     left, right := 0, len(s)-1
 
     for left < right {
+		// Skip non-alphanumeric characters from the left
         if !isAlphanumeric(string(s[left])) {
             left += 1
+		// Skip non-alphanumeric characters from the right
         } else if !isAlphanumeric(string(s[right])) {
             right -= 1
         } else {
+			 // Compare characters (case-insensitive)
             if strings.ToLower(string(s[left])) != strings.ToLower(string(s[right])) {
                 return false
             }
+			 // Move both pointers inward
             left += 1
             right -= 1
         }
