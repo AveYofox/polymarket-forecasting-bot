@@ -1,27 +1,37 @@
 # Minimum Swaps to Balance Brackets USING PYTHON
 
 ## Overview
-The algorithm counts the minimum number of swaps required to make a string of brackets balanced.
+This algorithm determines whether a given string is a valid palindrome, ignoring non-alphanumeric characters and case differences.
 
 ## Explanation 
 
-### Stack
-- The stack is used to track unmatched `[` brackets.
+### Two Pointers
+- Two pointers (left and right) are used to compare characters from the start and end of the string.
 
 ### Loop
-We iterate over each character in the string:
+We iterate while left is less than right:
 
-1. **If it's `[`**: 
-   - Push it onto the stack.
+1. **If character at left is not alphanumeric**:
+   - Move left to the right.
 
-2. **If it's `]`**:
-   - **If the stack is not empty**: 
-     - Pop the stack (indicating a match).
-   - **If the stack is empty**: 
-     - Increment `ans` (indicating an unmatched `]`).
+2. **If character at right is not alphanumeric**:
+   - Move right to the left.
+
+3. **If both are alphanumeric**:
+    - **If characters don't match (after converting to lowercase)**:
+      - Return false (not a palindrome).
+
+    - **If they match**:
+      - Move left to the right and right to the left.
 
 ### Return
-Finally, we return the minimum number of swaps needed, calculated as:
-\[
-\text{swaps} = \frac{(\text{ans} + 1)}{2}
-\]
+If the loop completes without finding any mismatches, return true (it's a palindrome).
+
+### Helper Function
+**isAlphanumeric**
+  - Uses a regular expression to check if a character is alphanumeric.
+  This approach efficiently handles the palindrome check by:
+
+  1. Ignoring non-alphanumeric characters.
+  2. Performing case-insensitive comparison.
+  3. Using a single pass through the string with two pointers.
