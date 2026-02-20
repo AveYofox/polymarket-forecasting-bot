@@ -1,4 +1,4 @@
-# minAddToMakeValid Parentheses Problem 🧩
+# Minimum Add to make Parentheses Valid Problem 🧩
 
 ## Problem Statement
 
